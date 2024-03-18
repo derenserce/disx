@@ -1,4 +1,4 @@
-package org.tale;
+package disx;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 

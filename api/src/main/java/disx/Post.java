@@ -1,11 +1,12 @@
-package org.tale;
+package disx;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Tale {
+public class Post {
     
     public String title;
+    public String author;
 }

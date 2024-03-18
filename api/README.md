@@ -47,6 +47,10 @@ You can then execute your native executable with: `./build/api-1.0.0-SNAPSHOT-ru
 
 If you want to learn more about building native executables, please consult https://quarkus.io/guides/gradle-tooling.
 
+## Related Guides
+
+- SmallRye OpenAPI ([guide](https://quarkus.io/guides/openapi-swaggerui)): Document your REST APIs with OpenAPI - comes with Swagger UI
+
 ## Provided Code
 
 ### RESTEasy Reactive
