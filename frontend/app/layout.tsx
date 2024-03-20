@@ -1,10 +1,7 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import "./globals.css"
+import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/ThemeProvider"
 import { ModeToggler } from "@/components/ModeToggler"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -18,14 +15,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="max-w-7xl mx-auto">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <ModeToggler />
+          <div className="pt-4">
+            <ModeToggler />
+          </div>
           {children}
         </ThemeProvider>
       </body>

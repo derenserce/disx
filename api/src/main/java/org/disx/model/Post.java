@@ -1,4 +1,4 @@
-package disx;
+package org.disx.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,6 @@ import lombok.Data;
 @AllArgsConstructor
 public class Post {
     
-    public String title;
-    public String author;
+    private String title;
+    private String content;
 }

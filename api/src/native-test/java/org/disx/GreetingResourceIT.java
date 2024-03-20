@@ -1,4 +1,4 @@
-package disx;
+package org.disx;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
