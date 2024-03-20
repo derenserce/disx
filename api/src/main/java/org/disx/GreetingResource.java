@@ -1,37 +1,46 @@
 package org.disx;
 
+import java.util.List;
+import java.util.UUID;
+
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
-import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.core.Response;
 
-@Path("/api")
+@Path("/api/posts")
+@Transactional
 public class GreetingResource {
 
     @Inject
     PostService postService;
 
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello RESTEasy";
-    }
-
     @POST
-    public Long createPost(Post post) {
+    public Response createPost(Post post) {
         postService.save(post);
-        return post.id;
+        return Response.ok(post.id).build();
     }
 
     @GET
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Post getPost(@PathParam("id") Long id) {
-        return postService.findById(id);
+    @Path("/posts")
+    public List<Post> getPosts() {
+        return postService.findAllPosts();
+    }
+
+    @GET
+    @Path("/posts/search")
+    public List<Post> findPostsByTitle(@QueryParam("title") String title) {
+        return postService.findPostsByTitle(title).toList();
+    }
+
+    @DELETE
+    @Path("/posts/{id}")
+    public Response deletePostById(@PathParam("id") UUID id) {
+        return postService.deletePost(id);
     }
 }
