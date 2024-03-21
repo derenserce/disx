@@ -20,6 +20,12 @@ public class GreetingResource {
     @Inject
     PostService postService;
 
+    @GET
+    @Path("/hello")
+    public String hello() {
+        return "Hello";
+    }
+
     @POST
     public Response createPost(Post post) {
         postService.save(post);
@@ -27,7 +33,6 @@ public class GreetingResource {
     }
 
     @GET
-    @Path("/posts")
     public List<Post> getPosts() {
         return postService.findAllPosts();
     }
